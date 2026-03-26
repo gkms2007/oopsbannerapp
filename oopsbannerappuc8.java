@@ -1,5 +1,70 @@
-public class oopsbannerappuc8 {
+import java.util.HashMap;
+import java.util.Map;
+
+public class OOPSBannerApp8 {
+
+    // Centralized Pattern Storage using HashMap
+    private static final Map<Character, String[]> patternMap = new HashMap<>();
+
+    // Load all character patterns
+    static void loadPatterns() {
+
+        patternMap.put('O', new String[]{
+                "*****",
+                "*   *",
+                "*   *",
+                "*   *",
+                "*****",
+                "     ",
+                "     "
+        });
+
+        patternMap.put('P', new String[]{
+                "*****",
+                "*   *",
+                "*****",
+                "*    ",
+                "*    ",
+                "     ",
+                "     "
+        });
+
+        patternMap.put('S', new String[]{
+                "*****",
+                "*    ",
+                "*****",
+                "    *",
+                "*****",
+                "     ",
+                "     "
+        });
+    }
+
+    // Render banner dynamically
+    static void renderBanner(String word) {
+
+        int height = 7;
+
+        for (int i = 0; i < height; i++) {
+
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+
+                String[] pattern = patternMap.get(ch);
+
+                if (pattern != null) {
+                    line.append(pattern[i]).append("  ");
+                }
+            }
+
+            System.out.println(line);
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println("UC8 Implementation");
+
+        loadPatterns();
+        renderBanner("OOPS");
     }
 }
